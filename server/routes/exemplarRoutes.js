@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post("/exemplars", async (req, res, next) => {
   const data = req.body;
-  console.log(req.body);
   try {
     const newExemplar = await exemplarService.saveExemplar(data);
     res.status(201).json(newExemplar);

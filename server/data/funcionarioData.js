@@ -8,6 +8,9 @@ exports.getFuncionarios = function () {
   return funcionario.findAll({ where: { codigo: codigo } }, { raw: true });
 };
 
+exports.getFuncionarioByEmail = function (email) {
+  return funcionario.findOne({ where: { email } });
+};
 exports.getFuncionario = function (codigo) {
   return funcionario.findOne({ where: { codigo } });
 };

@@ -1,7 +1,7 @@
 const exemplar = require("../models/exemplarModel");
 
 exports.saveExemplar = function (newExemplar) {
-  return exemplar.create(newexemplar, { raw: true });
+  return exemplar.create(newExemplar, { raw: true });
 };
 
 exports.getExemplars = function (numero, isbn) {

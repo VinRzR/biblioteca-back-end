@@ -2,7 +2,7 @@ const exemplarData = require("../data/exemplarData");
 const publicacaoData = require("../data/publicacaoData");
 
 exports.saveExemplar = async function (data) {
-  const exemplar_pub = publicacaoData.getPublicacao(data.isbn);
+  const exemplar_pub = await publicacaoData.getPublicacao(data.isbn);
   if (!exemplar_pub) throw new Error("Publicacão não Encontrada");
 
   return exemplarData.saveExemplar(data);

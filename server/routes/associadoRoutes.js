@@ -23,4 +23,15 @@ router.get("/associados/:codigo", async (req, res, next) => {
   }
 });
 
+router.post("/associados/login", async (req, res, next) => {
+  const data = req.body;
+  console.log(data.senha);
+  try {
+    const token = await associadoService.loginAssociado(data);
+    res.status(200).json(token);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;

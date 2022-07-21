@@ -7,7 +7,7 @@ const exemplar = connection.define(
     numero: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      allowNull: false,
     },
     isbn: {
       type: DataTypes.TEXT,
@@ -24,6 +24,8 @@ const exemplar = connection.define(
     timestamps: false,
   }
 );
+//ARRUMAR
+publicacao.hasMany(exemplar, { foreignKey: "isbn" });
 exemplar.belongsTo(publicacao, { foreignKey: "isbn", targetKey: "isbn" });
 exemplar.sync();
 

@@ -8,6 +8,9 @@ exports.getAssociados = function (codigo) {
   return associado.findAll({ where: { codigo: codigo } }, { raw: true });
 };
 
+exports.getAssociadoByEmail = function (email) {
+  return associado.findOne({ where: { email } });
+};
 exports.getAssociado = function (codigo) {
   return associado.findOne({ where: { codigo } });
 };

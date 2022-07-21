@@ -26,6 +26,7 @@ const publicacao = connection.define(
     timestamps: false,
   }
 );
+
 publicacao.sync();
 
 module.exports = publicacao;

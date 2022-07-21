@@ -25,4 +25,14 @@ router.get("/funcionarios/:codigo", async (req, res, next) => {
   }
 });
 
+router.post("/funcionarios/login", async (req, res, next) => {
+  const data = req.body;
+  try {
+    const token = await funcionarioService.loginFuncionario(data);
+    res.status(200).json(token);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;
