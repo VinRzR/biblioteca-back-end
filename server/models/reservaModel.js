@@ -3,8 +3,8 @@ const connection = require("../infra/database");
 const associado = require("../models/associadoModel");
 const publicacao = require("../models/publicacaoModel");
 
-const publicacao = connection.define(
-  "publicacao",
+const reserva = connection.define(
+  "reserva",
   {
     codigo: {
       type: DataTypes.INTEGER,
@@ -29,11 +29,11 @@ const publicacao = connection.define(
     timestamps: false,
   }
 );
-exemplar.belongsTo(publicacao, { foreignKey: "isbn", targetKey: "isbn" });
-emprestimo.belongsTo(associado, {
+reserva.belongsTo(publicacao, { foreignKey: "isbn", targetKey: "isbn" });
+reserva.belongsTo(associado, {
   foreignKey: "codigo_assoc",
   targetKey: "codigo",
 });
-publicacao.sync();
+reserva.sync();
 
-module.exports = publicacao;
+module.exports = reserva;
