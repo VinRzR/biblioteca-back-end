@@ -1,21 +1,21 @@
-const associado = require("../models/associadoModel");
+const reserva = require("../models/reservaModel");
 
-exports.saveAssociado = function (newAssociado) {
-  return associado.create(newAssociado, { raw: true });
+exports.saveReserva = function (newReserva) {
+  return reserva.create(newReserva, { raw: true });
 };
 
-exports.getAssociados = function () {
-  return associado.findAll();
+exports.getReservas = function () {
+  return reserva.findAll({ where: { codigo: codigo } }, { raw: true });
 };
 
-exports.getAssociado = function (codigo) {
-  return associado.findOne({ where: { codigo } });
+exports.getReserva = function (codigo) {
+  return reserva.findOne({ where: { codigo } });
 };
 
-exports.putAssociado = function (codigo, newData) {
-  return associado.update(newData, { where: { codigo } });
+exports.putReserva = function (codigo, newData) {
+  return reserva.update(newData, { where: { codigo } });
 };
 
-exports.deleteAssociado = function (codigo) {
-  return associado.destroy({ where: { codigo } });
+exports.deleteReserva = function (codigo) {
+  return reserva.destroy({ where: { codigo } });
 };

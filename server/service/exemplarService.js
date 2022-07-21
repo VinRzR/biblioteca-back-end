@@ -1,22 +1,25 @@
-const associadoData = require("../data/associadoData");
+const exemplarData = require("../data/exemplarData");
+const publicacaoData = require("../data/publicacaoData");
 
-exports.saveAssociado = async function (data) {
-  console.log(data);
-  return associadoData.saveAssociado(data);
+exports.saveExemplar = async function (data) {
+  const exemplar_pub = publicacaoData.getPublicacao(data.isbn);
+  if (!exemplar_pub) throw new Error("Publicacão não Encontrada");
+
+  return exemplarData.saveExemplar(data);
 };
 
-exports.getAssociados = async function () {
-  return associadoData.getAssociados(data);
+exports.getExemplars = async function () {
+  return exemplarData.getExemplars(data);
 };
 
-exports.geteAssociado = async function (codigo) {
-  return associadoData.getAssociado(codigo);
+exports.getExemplar = async function (codigo) {
+  return exemplarData.getExemplar(codigo);
 };
 
-exports.putAssociado = async function (codigo, newData) {
-  return associadoData.putAssociado(codigo, newData);
+exports.putExemplar = async function (codigo, newData) {
+  return exemplarData.putExemplar(codigo, newData);
 };
 
-exports.deleteAssociado = async function (codigo) {
-  return associadoData.deleteAssociado(codigo);
+exports.deleteExemplar = async function (codigo) {
+  return exemplarData.deleteExemplar(codigo);
 };

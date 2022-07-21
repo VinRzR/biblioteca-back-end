@@ -1,21 +1,24 @@
-const associado = require("../models/associadoModel");
+const exemplar = require("../models/exemplarModel");
 
-exports.saveAssociado = function (newAssociado) {
-  return associado.create(newAssociado, { raw: true });
+exports.saveExemplar = function (newExemplar) {
+  return exemplar.create(newexemplar, { raw: true });
 };
 
-exports.getAssociados = function () {
-  return associado.findAll();
+exports.getExemplars = function (numero, isbn) {
+  return exemplar.findAll(
+    { where: { numero: numero, isbn: isbn } },
+    { raw: true }
+  );
 };
 
-exports.getAssociado = function (codigo) {
-  return associado.findOne({ where: { codigo } });
+exports.getExemplar = function (numero, isbn) {
+  return exemplar.findOne({ where: { numero, isbn } });
 };
 
-exports.putAssociado = function (codigo, newData) {
-  return associado.update(newData, { where: { codigo } });
+exports.putExemplar = function (numero, isbn, newData) {
+  return exemplar.update(newData, { where: { numero: numero, isbn: isbn } });
 };
 
-exports.deleteAssociado = function (codigo) {
-  return associado.destroy({ where: { codigo } });
+exports.deleteExemplar = function (numero, isbn) {
+  return exemplar.destroy({ where: { numero, isbn } });
 };

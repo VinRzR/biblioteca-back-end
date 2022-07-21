@@ -1,22 +1,29 @@
+const reservaData = require("../data/reservaData");
 const associadoData = require("../data/associadoData");
+const publicacaoData = require("../data/publicacaoData");
 
-exports.saveAssociado = async function (data) {
-  console.log(data);
-  return associadoData.saveAssociado(data);
+exports.saveReserva = async function (data) {
+  const reserva_assoc = await associadoData.getAssociado(data.codigo_assoc);
+  if (!reserva_assoc) throw new Error("Associado não encontrado");
+
+  const reserva_pub = publicacaoData.getPublicacao(data.isbn);
+  if (!reserva_pub) throw new Error("Publicacão não Encontrada");
+
+  return reservaData.saveReserva(data);
 };
 
-exports.getAssociados = async function () {
-  return associadoData.getAssociados(data);
+exports.getReservas = async function () {
+  return reservaData.getReservas(data);
 };
 
-exports.geteAssociado = async function (codigo) {
-  return associadoData.getAssociado(codigo);
+exports.getReserva = async function (codigo) {
+  return reservaData.getReserva(codigo);
 };
 
-exports.putAssociado = async function (codigo, newData) {
-  return associadoData.putAssociado(codigo, newData);
+exports.putReserva = async function (codigo, newData) {
+  return reservaData.putReserva(codigo, newData);
 };
 
-exports.deleteAssociado = async function (codigo) {
-  return associadoData.deleteAssociado(codigo);
+exports.deleteReserva = async function (codigo) {
+  return reservaData.deleteReserva(codigo);
 };

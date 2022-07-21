@@ -1,22 +1,21 @@
-const associadoData = require("../data/associadoData");
+const funcionarioData = require("../data/funcionarioData");
 
-exports.saveAssociado = async function (data) {
-  console.log(data);
-  return associadoData.saveAssociado(data);
+exports.saveFuncionario = async function (data) {
+  return funcionarioData.saveFuncionario(data);
 };
 
-exports.getAssociados = async function () {
-  return associadoData.getAssociados(data);
+exports.getFuncionarios = async function () {
+  return funcionarioData.getFuncionarios(data);
 };
 
-exports.geteAssociado = async function (codigo) {
-  return associadoData.getAssociado(codigo);
+exports.getFuncionario = async function (codigo) {
+  return funcionarioData.getFuncionario(codigo);
 };
 
-exports.putAssociado = async function (codigo, newData) {
-  return associadoData.putAssociado(codigo, newData);
+exports.putFuncionario = async function (codigo, newData) {
+  return funcionarioData.putFuncionario(codigo, newData);
 };
 
-exports.deleteAssociado = async function (codigo) {
-  return associadoData.deleteAssociado(codigo);
+exports.deleteFuncionario = async function (codigo) {
+  return funcionarioData.deleteFuncionario(codigo);
 };

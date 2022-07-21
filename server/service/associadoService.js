@@ -1,7 +1,6 @@
 const associadoData = require("../data/associadoData");
 
 exports.saveAssociado = async function (data) {
-  console.log(data);
   return associadoData.saveAssociado(data);
 };
 
@@ -9,7 +8,7 @@ exports.getAssociados = async function () {
   return associadoData.getAssociados(data);
 };
 
-exports.geteAssociado = async function (codigo) {
+exports.getAssociado = async function (codigo) {
   return associadoData.getAssociado(codigo);
 };
 

@@ -4,8 +4,8 @@ exports.saveAssociado = function (newAssociado) {
   return associado.create(newAssociado, { raw: true });
 };
 
-exports.getAssociados = function () {
-  return associado.findAll();
+exports.getAssociados = function (codigo) {
+  return associado.findAll({ where: { codigo: codigo } }, { raw: true });
 };
 
 exports.getAssociado = function (codigo) {

@@ -1,21 +1,21 @@
-const associado = require("../models/associadoModel");
+const emprestimo = require("../models/emprestimoModel");
 
-exports.saveAssociado = function (newAssociado) {
-  return associado.create(newAssociado, { raw: true });
+exports.saveEmprestimo = function (newEmprestimo) {
+  return emprestimo.create(newEmprestimo, { raw: true });
 };
 
-exports.getAssociados = function () {
-  return associado.findAll();
+exports.getEmprestimos = function () {
+  return emprestimo.findAll({ where: { codigo: codigo } }, { raw: true });
 };
 
-exports.getAssociado = function (codigo) {
-  return associado.findOne({ where: { codigo } });
+exports.getEmprestimo = function (codigo) {
+  return emprestimo.findOne({ where: { codigo } });
 };
 
-exports.putAssociado = function (codigo, newData) {
-  return associado.update(newData, { where: { codigo } });
+exports.putEmprestimo = function (codigo, newData) {
+  return emprestimo.update(newData, { where: { codigo } });
 };
 
-exports.deleteAssociado = function (codigo) {
-  return associado.destroy({ where: { codigo } });
+exports.deleteEmprestimo = function (codigo) {
+  return emprestimo.destroy({ where: { codigo } });
 };

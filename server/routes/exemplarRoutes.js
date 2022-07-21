@@ -1,23 +1,23 @@
 const express = require("express");
-const associadoService = require("../service/associadoService");
+const exemplarService = require("../service/exemplarService");
 
 const router = express.Router();
 
-router.post("/associados", async (req, res, next) => {
+router.post("/exemplars", async (req, res, next) => {
   const data = req.body;
   console.log(req.body);
   try {
-    const newAssociado = await associadoService.saveAssociado(data);
-    res.status(201).json(newAssociado);
+    const newExemplar = await exemplarService.saveExemplar(data);
+    res.status(201).json(newExemplar);
   } catch (e) {
     next(e);
   }
 });
 
-router.get("/associados/:codigo", async (req, res, next) => {
+router.get("/exemplars/:codigo", async (req, res, next) => {
   try {
-    const associado = await associadoService.getAssociado(req.params.codigo);
-    res.status(201).json(associado);
+    const exemplar = await exemplarService.getExemplar(req.params.codigo);
+    res.status(201).json(exemplar);
   } catch (e) {
     next(e);
   }

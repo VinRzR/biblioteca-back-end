@@ -1,21 +1,25 @@
-const associado = require("../models/associadoModel");
+const publicacao = require("../models/publicacaoModel");
 
-exports.saveAssociado = function (newAssociado) {
-  return associado.create(newAssociado, { raw: true });
+exports.savePublicacao = function (newPublicacao) {
+  return publicacao.create(newPublicacao, { raw: true });
 };
 
-exports.getAssociados = function () {
-  return associado.findAll();
+exports.getPublicacaos = function (isbn) {
+  return publicacao.findAll({ where: { isbn: isbn } }, { raw: true });
 };
 
-exports.getAssociado = function (codigo) {
-  return associado.findOne({ where: { codigo } });
+exports.getPublicacaosByTitle = function (nome) {
+  return publicacao.findAll({ where: { nome: nome } }, { raw: true });
 };
 
-exports.putAssociado = function (codigo, newData) {
-  return associado.update(newData, { where: { codigo } });
+exports.getPublicacao = function (isbn) {
+  return publicacao.findOne({ where: { isbn } });
 };
 
-exports.deleteAssociado = function (codigo) {
-  return associado.destroy({ where: { codigo } });
+exports.putPublicacao = function (isbn, newData) {
+  return publicacao.update(newData, { where: { isbn } });
+};
+
+exports.deletePublicacao = function (isbn) {
+  return publicacao.destroy({ where: { isbn } });
 };

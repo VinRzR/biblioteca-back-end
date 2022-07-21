@@ -1,21 +1,21 @@
-const associado = require("../models/associadoModel");
+const funcionario = require("../models/funcionarioModel");
 
-exports.saveAssociado = function (newAssociado) {
-  return associado.create(newAssociado, { raw: true });
+exports.saveFuncionario = function (newFuncionario) {
+  return funcionario.create(newFuncionario, { raw: true });
 };
 
-exports.getAssociados = function () {
-  return associado.findAll();
+exports.getFuncionarios = function () {
+  return funcionario.findAll({ where: { codigo: codigo } }, { raw: true });
 };
 
-exports.getAssociado = function (codigo) {
-  return associado.findOne({ where: { codigo } });
+exports.getFuncionario = function (codigo) {
+  return funcionario.findOne({ where: { codigo } });
 };
 
-exports.putAssociado = function (codigo, newData) {
-  return associado.update(newData, { where: { codigo } });
+exports.putFuncionario = function (codigo, newData) {
+  return funcionario.update(newData, { where: { codigo } });
 };
 
-exports.deleteAssociado = function (codigo) {
-  return associado.destroy({ where: { codigo } });
+exports.deleteFuncionario = function (codigo) {
+  return funcionario.destroy({ where: { codigo } });
 };
