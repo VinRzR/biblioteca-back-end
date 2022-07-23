@@ -14,6 +14,24 @@ router.post("/emprestimos", async (req, res, next) => {
   }
 });
 
+router.post("/devolverExemplar", async (req, res, next) => {
+  try {
+    const multa = await emprestimoService.devolverExemplar(req.body);
+    res.status(200).json(multa);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+router.get("/emprestimosAtrasados", async (req, res, next) => {
+  try {
+    const emprestimosAtrasados = await emprestimoService.buscarAtrasados();
+    res.status(200).json(emprestimosAtrasados);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 router.get("/emprestimos/:codigo", async (req, res, next) => {
   try {
     const emprestimo = await emprestimoService.getEmprestimo(req.params.codigo);

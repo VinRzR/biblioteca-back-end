@@ -11,6 +11,10 @@ exports.getExemplars = function (numero, isbn) {
   );
 };
 
+exports.getExemplarsByIsbn = function (isbn) {
+  return exemplar.findAll({ where: { isbn } }, { raw: true });
+};
+
 exports.getExemplar = function (numero, isbn) {
   return exemplar.findOne({ where: { numero, isbn } });
 };

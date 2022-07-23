@@ -8,8 +8,28 @@ exports.saveExemplar = async function (data) {
   return exemplarData.saveExemplar(data);
 };
 
-exports.getExemplars = async function () {
-  return exemplarData.getExemplars(data);
+exports.getExemplarsByIsbn = async function (isbn) {
+  return exemplarData.getExemplarsByIsbn(isbn);
+};
+
+exports.buscaExemplaresDisponiveis = async function (isbn) {
+  const exemplares = await exemplarData.buscaExemplarPorIsbn(isbn);
+  const emprestimos = await emprestimoData.buscarEmprestimos(isbn);
+
+  let exemplarLivre = [];
+  exemplares.forEach((exemplar) => {
+    let check = true;
+    emprestimos.forEach((emprestimo) => {
+      if (exemplar.numero === emprestimo.nro_exemplar) {
+        check = false;
+      }
+    });
+    if (check) {
+      exemplarLivre.push(exemplar);
+    }
+  });
+
+  return exemplarLivre;
 };
 
 exports.getExemplar = async function (codigo) {

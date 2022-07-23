@@ -22,4 +22,13 @@ router.get("/exemplars/:codigo", async (req, res, next) => {
   }
 });
 
+router.get("/exemplars/consulta/:isbn", async (req, res, next) => {
+  try {
+    const exemplar = await exemplarService.getExemplarsByIsbn(req.params.isbn);
+    res.status(201).json(exemplar);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;
