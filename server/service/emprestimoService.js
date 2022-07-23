@@ -3,7 +3,7 @@ const emprestimoData = require("../data/emprestimoData");
 const associadoData = require("../data/associadoData");
 const reservaData = require("../data/reservaData");
 const publicacaoData = require("../data/publicacaoData");
-const exemplarData = requite("../data/exemplarData");
+const exemplarData = require("../data/exemplarData");
 
 exports.saveEmprestimo = async function (data) {
   const emprestimo_assoc = await associadoData.getAssociado(data.codigo_assoc);
