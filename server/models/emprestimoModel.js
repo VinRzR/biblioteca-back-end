@@ -23,7 +23,7 @@ const emprestimo = connection.define(
     },
     data_emp: {
       type: DataTypes.DATE,
-      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     data_devol: {
       type: DataTypes.DATE,

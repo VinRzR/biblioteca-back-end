@@ -23,7 +23,7 @@ exports.saveEmprestimo = async function (data) {
   if (reservaValid && reservaValid.codigo_assoc !== data.codigo_assoc)
     throw new Error("Alguem na frente!");
 
-  const associado = await associadoData.buscarPorCodigo(data.codigo_assoc);
+  const associado = await associadoData.getAssociado(data.codigo_assoc);
 
   //Caso ele seja o primeiro na reserva
   if (reservaValid && reservaValid.codigo_assoc === data.codigo_assoc) {
