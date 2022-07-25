@@ -23,4 +23,13 @@ router.get("/reservas/:codigo", async (req, res, next) => {
   }
 });
 
+router.get("/reservas/consulta/:isbn", async (req, res, next) => {
+  try {
+    const reserva = await reservaService.getReservasByIsbn(req.params.isbn);
+    res.status(201).json(reserva);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;
