@@ -5,7 +5,7 @@ exports.saveEmprestimo = function (newEmprestimo) {
 };
 
 exports.getEmprestimos = function () {
-  return emprestimo.findAll({ where: { codigo: codigo } }, { raw: true });
+  return emprestimo.findAll({ where: { isbn } }, { raw: true });
 };
 
 exports.getEmprestimo = function (codigo) {

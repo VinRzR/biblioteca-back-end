@@ -19,6 +19,10 @@ const reserva = connection.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    data: {
+      type: DataTypes.DATE,
+      defaultVlue: DataTypes.NOW,
+    },
     status: {
       type: DataTypes.ENUM("Iniciado", "Avisado", "Anulado"),
       allowNull: false,
