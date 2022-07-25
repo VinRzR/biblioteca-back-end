@@ -29,7 +29,7 @@ const reserva = connection.define(
     },
   },
   {
-    tableName: "publicacao",
+    tableName: "reserva",
     timestamps: false,
   }
 );
