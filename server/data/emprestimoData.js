@@ -4,7 +4,7 @@ exports.saveEmprestimo = function (newEmprestimo) {
   return emprestimo.create(newEmprestimo, { raw: true });
 };
 
-exports.getEmprestimos = function () {
+exports.getEmprestimos = function (isbn) {
   return emprestimo.findAll({ where: { isbn } }, { raw: true });
 };
 
