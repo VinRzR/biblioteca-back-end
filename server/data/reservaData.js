@@ -5,7 +5,7 @@ exports.saveReserva = function (newReserva) {
 };
 
 exports.getReservasByIsbn = function (isbn) {
-  return reserva.findAll({ where: { isbn } }, { raw: true });
+  return reserva.findAll({ where: { isbn } });
 };
 
 exports.getReserva = function (codigo) {
