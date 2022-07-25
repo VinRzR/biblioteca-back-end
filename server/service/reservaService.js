@@ -4,7 +4,7 @@ const publicacaoData = require("../data/publicacaoData");
 const emprestimoData = require("../data/emprestimoData");
 const exemplarData = require("../data/exemplarData");
 
-exports.salvarReserva = async function (data) {
+exports.saveReserva = async function (data) {
   const emprestimos = await emprestimoData.getEmprestimos(data.isbn);
   const exemplares = await exemplarData.getExemplarsByIsbn(data.isbn);
 
