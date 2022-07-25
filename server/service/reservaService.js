@@ -4,18 +4,15 @@ const publicacaoData = require("../data/publicacaoData");
 const emprestimoData = require("../data/emprestimoData");
 const exemplarData = require("../data/exemplarData");
 
-exports.saveReserva = async function (data) {
-  const reserva_assoc = await associadoData.getAssociado(data.codigo_assoc);
-  if (!reserva_assoc) throw new Error("Associado não encontrado");
+exports.salvarReserva = async function (data) {
+  const emprestimos = await emprestimoData.getEmprestimos(data.isbn);
+  const exemplares = await exemplarData.getExemplarsByIsbn(data.isbn);
 
-  const reserva_pub = await publicacaoData.getPublicacao(data.isbn);
-  if (!reserva_pub) throw new Error("Publicacão não Encontrada");
+  if (emprestimos.length < exemplares.length)
+    throw new Error("Ainda existe exemplar disponível");
 
-  const emprestimos = emprestimoData.getEmprestimos();
-  console.log(emprestimos);
-  const exemplars = exemplarData.getExemplars();
-  console.log(exemplars);
-  return reservaData.saveReserva(data);
+  const novaReserv = data;
+  return reservaData.saveReserva(novaReserv);
 };
 
 exports.getReservasByIsbn = async function (isbn) {
