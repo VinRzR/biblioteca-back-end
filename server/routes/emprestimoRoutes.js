@@ -41,4 +41,15 @@ router.get("/emprestimos/:codigo", async (req, res, next) => {
   }
 });
 
+router.get("/emprestimos/consulta/:codigo", async (req, res, next) => {
+  try {
+    const emprestimo = await emprestimoService.getEmprestimosByAssoc(
+      req.params.codigo
+    );
+    res.status(201).json(emprestimo);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;

@@ -47,7 +47,7 @@ exports.saveEmprestimo = async function (data) {
 };
 
 exports.devolverExemplar = async function (data) {
-  const emprestimo = await emprestimoData.buscarEmprestimo(
+  const emprestimo = await emprestimoData.getEmprestimo(
     data.isbn,
     data.nro_exemplar,
     data.codigo_assoc
@@ -102,6 +102,10 @@ exports.getAtrasados = async function () {
 
 exports.getEmprestimos = async function () {
   return emprestimoData.getEmprestimos(data);
+};
+
+exports.getEmprestimosByAssoc = async function (codigo_assoc) {
+  return emprestimoData.getEmprestimosByCodigoAssoc(codigo_assoc);
 };
 
 exports.getEmprestimo = async function (codigo) {

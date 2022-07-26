@@ -8,12 +8,19 @@ exports.getEmprestimos = function (isbn) {
   return emprestimo.findAll({ where: { isbn } }, { raw: true });
 };
 
+exports.getEmprestimosByCodigoAssoc = function (codigo_assoc) {
+  return emprestimo.findAll({ where: { codigo_assoc } }, { raw: true });
+};
+
 exports.getAllEmprestimos = function () {
   return emprestimo.findAll();
 };
 
-exports.getEmprestimo = function (codigo) {
-  return emprestimo.findOne({ where: { codigo } });
+exports.getEmprestimo = function (isbn, nro_exemplar, codigo_assoc) {
+  return emprestimo.findOne({
+    where: { isbn, nro_exemplar, codigo_assoc },
+    raw: true,
+  });
 };
 
 exports.putEmprestimo = function (codigo, newData) {
