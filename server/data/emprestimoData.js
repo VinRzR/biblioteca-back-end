@@ -8,6 +8,10 @@ exports.getEmprestimos = function (isbn) {
   return emprestimo.findAll({ where: { isbn } }, { raw: true });
 };
 
+exports.getAllEmprestimos = function () {
+  return emprestimo.findAll();
+};
+
 exports.getEmprestimo = function (codigo) {
   return emprestimo.findOne({ where: { codigo } });
 };

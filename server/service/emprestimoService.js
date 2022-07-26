@@ -81,8 +81,8 @@ exports.devolverExemplar = async function (data) {
   throw "Emprestimo não encontrado";
 };
 
-exports.buscarAtrasados = async function () {
-  const emprestimos = await emprestimoData.buscarTodosEmprestimos();
+exports.getAtrasados = async function () {
+  const emprestimos = await emprestimoData.getAllEmprestimos();
 
   let atrasados = [];
   if (emprestimos.length) {
