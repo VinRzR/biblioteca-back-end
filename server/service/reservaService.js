@@ -11,8 +11,8 @@ exports.saveReserva = async function (data) {
   if (emprestimos.length < exemplares.length)
     throw new Error("Ainda existe exemplar disponível");
 
-  const novaReserv = data;
-  return reservaData.saveReserva(novaReserv);
+  const newReserva = data;
+  return reservaData.saveReserva(newReserva);
 };
 
 exports.getReservasByIsbn = async function (isbn) {
@@ -20,7 +20,7 @@ exports.getReservasByIsbn = async function (isbn) {
 };
 
 exports.anularReserva = async function (data) {
-  const reserva = await reservaData.buscaReservaPorAssociado(
+  const reserva = await reservaData.getReservabyAssoc(
     data.isbn,
     data.codigo_assoc
   );
@@ -29,7 +29,7 @@ exports.anularReserva = async function (data) {
     const reservaStatus = {
       status: "Anulado",
     };
-    return reservaData.atualizarReserva(reserva.codigo, reservaStatus);
+    return reservaData.putReserva(reserva.codigo, reservaStatus);
   }
 
   throw "Reserva não encontrada";

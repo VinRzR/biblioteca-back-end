@@ -12,6 +12,10 @@ exports.getReserva = function (codigo) {
   return reserva.findOne({ where: { codigo } });
 };
 
+exports.getReservaByIsbn = function (isbn, codigo_assoc) {
+  return reserva.findOne({ where: { isbn, codigo_assoc } });
+};
+
 exports.putReserva = function (codigo, newData) {
   return reserva.update(newData, { where: { codigo } });
 };

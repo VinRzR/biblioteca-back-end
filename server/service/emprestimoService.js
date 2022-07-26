@@ -21,7 +21,7 @@ exports.saveEmprestimo = async function (data) {
   });
 
   if (reservaValid && reservaValid.codigo_assoc !== data.codigo_assoc)
-    throw new Error("Alguem na frente!");
+    throw new Error("Reservas na frente");
 
   const associado = await associadoData.getAssociado(data.codigo_assoc);
 
@@ -44,6 +44,25 @@ exports.saveEmprestimo = async function (data) {
   }
 
   return emprestimoData.saveEmprestimo(data);
+};
+
+exports.getAtrasados = async function () {
+  const emprestimos = await emprestimoData.getAllEmprestimos();
+
+  let atrasados = [];
+  if (emprestimos.length) {
+    const now = moment();
+    emprestimos.forEach((emprestimo) => {
+      if (now.diff(emprestimo.data_devol, "days") > 0) {
+        atrasados.push({
+          codigo_assoc: emprestimo.codigo_assoc,
+          isbn: emprestimo.isbn,
+        });
+      }
+    });
+  }
+
+  return atrasados;
 };
 
 exports.devolverExemplar = async function (data) {
@@ -79,25 +98,6 @@ exports.devolverExemplar = async function (data) {
     return diff > 0 ? { multa: diff } : { multa: 0 };
   }
   throw "Emprestimo não encontrado";
-};
-
-exports.getAtrasados = async function () {
-  const emprestimos = await emprestimoData.getAllEmprestimos();
-
-  let atrasados = [];
-  if (emprestimos.length) {
-    const now = moment();
-    emprestimos.forEach((emprestimo) => {
-      if (now.diff(emprestimo.data_devol, "days") > 0) {
-        atrasados.push({
-          codigo_assoc: emprestimo.codigo_assoc,
-          isbn: emprestimo.isbn,
-        });
-      }
-    });
-  }
-
-  return atrasados;
 };
 
 exports.getEmprestimos = async function () {
